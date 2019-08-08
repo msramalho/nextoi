@@ -14,7 +14,7 @@ export class IdeaComponent implements OnInit {
     ngOnInit() { }
 
 
-    deleteIdea(idea: Idea): void {
+    showActionSheet(idea: Idea): void {
         console.log(`deleted idea ${idea.title}`);
     }
 }

@@ -1,4 +1,7 @@
 <ion-item>
-  {{idea.title}}
-  <ion-button (click)="deleteIdea(idea)">Delete</ion-button>
+  <ion-label>{{idea.title}}</ion-label>
+  <ion-button fill="clear" (click)="showActionSheet(idea)">
+    <ion-icon slot="icon-only" color="medium" name="more"></ion-icon>
+    <ion-ripple-effect></ion-ripple-effect>
+  </ion-button>
 </ion-item>
