@@ -1,3 +1,12 @@
 <ion-list *ngFor="let idea of ideas;" lines="full">
-  <app-idea [idea]="idea"></app-idea>
+    <ion-item>
+        <ion-label>
+          {{idea.title}}
+          <span *ngIf="idea.archived">(Archived)</span>
+        </ion-label>
+        <ion-button fill="clear" (click)="showActionSheet(idea)">
+            <ion-icon slot="icon-only" color="medium" name="more"></ion-icon>
+            <ion-ripple-effect></ion-ripple-effect>
+        </ion-button>
+    </ion-item>
 </ion-list>
