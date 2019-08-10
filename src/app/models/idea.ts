@@ -1,4 +1,8 @@
 export class Idea {
-	title: string;
-	archived: boolean;
+
+	constructor(public title: string, public archived: boolean, public scores: { name: string, value: number }[]) { }
+
+	getScore(): number {
+		return this.scores.map(score => score.value).reduce((s, v) => s + v) / this.scores.length;
+	}
 }

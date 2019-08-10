@@ -4,7 +4,7 @@
         "codelyzer"
     ],
     "rules": {
-        "indent": [true, "spaces", 4],
+        "indent": [true, "tabs", 4],
         "array-type": false,
         "arrow-parens": false,
         "deprecation": {

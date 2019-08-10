@@ -1,12 +1,27 @@
 <ion-list *ngFor="let idea of ideas;" lines="full">
-    <ion-item>
-        <ion-label>
-          {{idea.title}}
-          <span *ngIf="idea.archived">(Archived)</span>
-        </ion-label>
-        <ion-button fill="clear" (click)="showActionSheet(idea)">
-            <ion-icon slot="icon-only" color="medium" name="more"></ion-icon>
-            <ion-ripple-effect></ion-ripple-effect>
-        </ion-button>
+    <ion-item class="ion-no-padding">
+        <ion-grid class="ion-no-padding">
+            <ion-row nowrap>
+                <ion-col size="3">
+                    <span class="score">{{idea.getScore() | number : '1.1-2'}}</span>
+                </ion-col>
+                <ion-col size="7">
+                    <ion-label>
+                        {{idea.title}}
+                    </ion-label>
+                    <span *ngIf="idea.archived">(Archived)</span>
+                </ion-col>
+                <ion-col size="2">
+                    <ion-button fill="clear" (click)="showActionSheet(idea)">
+                        <ion-icon slot="icon-only" color="medium" name="more"></ion-icon>
+                        <ion-ripple-effect></ion-ripple-effect>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+            <ion-row nowrap>
+                <div>2 of 2</div>
+            </ion-row>
+        </ion-grid>
+
     </ion-item>
 </ion-list>

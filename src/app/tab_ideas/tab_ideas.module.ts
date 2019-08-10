@@ -7,12 +7,12 @@ import { TabIdeas as TabIdeas } from './tab_ideas.page';
 import { IdeaListComponent } from '../components/idea-list/idea-list.component';
 
 @NgModule({
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    RouterModule.forChild([{ path: '', component: TabIdeas }])
-  ],
-  declarations: [TabIdeas, IdeaListComponent]
+	imports: [
+		IonicModule,
+		CommonModule,
+		FormsModule,
+		RouterModule.forChild([{ path: '', component: TabIdeas }])
+	],
+	declarations: [TabIdeas, IdeaListComponent]
 })
-export class TabIdeasModule {}
+export class TabIdeasModule { }
