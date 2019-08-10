@@ -44,7 +44,6 @@ export class IdeaListComponent implements OnInit {
 		});
 	}
 
-	// filter methods
 	display() {
 		this.visibleIdeas = this.ideas.filter(
 			i => i.archived === this.showArchived
@@ -64,7 +63,6 @@ export class IdeaListComponent implements OnInit {
 		});
 	}
 
-	// idea actions
 	deleteIdea(idea: Idea) {
 		this.ideas = this.ideas.filter(i => i !== idea);
 		this.events.publish('ideas:updated');
@@ -75,7 +73,6 @@ export class IdeaListComponent implements OnInit {
 		this.events.publish('ideas:updated');
 	}
 
-	// others
 	showActionSheet(idea: Idea): void {
 		new ActionSheetIdeaComponent(idea, this).presentActionSheet();
 	}

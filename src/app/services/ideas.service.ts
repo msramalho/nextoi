@@ -30,4 +30,9 @@ export class IdeasService {
 	async getIdeas(): Promise<Idea[]> {
 		return this.ready.then(() => this.ideas);
 	}
+
+	addIdea(title: string, description: string) {
+		this.ideas.push(new Idea(title, description, false, new Date(), []));
+		this.events.publish('ideas:updated');
+	}
 }
