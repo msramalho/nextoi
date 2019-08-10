@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TabArchivePage } from './tab_archive.page';
-import { IdeasListBarModule } from '../ideas-list-bar/ideas-list-bar.module';
+import { IdeasListBarModule } from '../shared_modules/ideas-list-bar/ideas-list-bar.module';
 
 @NgModule({
 	imports: [
