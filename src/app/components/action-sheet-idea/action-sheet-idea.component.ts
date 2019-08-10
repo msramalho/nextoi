@@ -1,10 +1,12 @@
 import { OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 import { Idea } from 'src/app/models/idea';
+import { Router } from '@angular/router';
 
 export class ActionSheetIdeaComponent implements OnInit {
 
 	private actionSheetController: ActionSheetController = new ActionSheetController();
+
 	constructor(private idea: Idea, private ideas: any) { }
 
 	ngOnInit() { }
@@ -16,13 +18,7 @@ export class ActionSheetIdeaComponent implements OnInit {
 				text: 'Edit',
 				icon: 'create',
 				handler: () => {
-					console.log('Edit clicked');
-				}
-			}, {
-				text: 'Share',
-				icon: 'share',
-				handler: () => {
-					console.log('Share clicked');
+					this.ideas.router.navigate(['/add-idea'], { queryParams: { id: this.idea.id } });
 				}
 			}, {
 				text: this.idea.archived ? 'Unarchive' : 'Archive',

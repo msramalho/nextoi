@@ -32,11 +32,19 @@ export class IdeasService {
 		return this.ready.then(() => this.ideas);
 	}
 
-	addIdea(title: string, description: string, topics: { string: number }[]) {
-		this.ideas.push(
-			new Idea(title, description, false, new Date(),
-				Object.keys(topics).map((k, v) => ({ name: k, value: topics[k] }))
-			));
+	getIdea(id): Idea {
+		return this.ideas.find(idea => idea.id === id);
+	}
+
+	addIdea(title: string, description: string, topics: {}) {
+		this.ideas.push(new Idea(title, description, false, new Date(), topics));
+		this.events.publish('ideas:updated', this.ideas);
+	}
+
+	editIdea(idea: Idea, title: string, description: string, topics: {}) {
+		idea.title = title;
+		idea.description = description;
+		idea.topics = topics;
 		this.events.publish('ideas:updated', this.ideas);
 	}
 

@@ -3,6 +3,7 @@ import { Idea } from 'src/app/models/idea';
 import { ActionSheetIdeaComponent } from '../action-sheet-idea/action-sheet-idea.component';
 import { Events } from '@ionic/angular';
 import { IdeasService } from 'src/app/services/ideas.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-idea-list',
@@ -18,7 +19,7 @@ export class IdeaListComponent implements OnInit {
 	private ideas: Idea[];
 	private visibleIdeas: Idea[] = [];
 
-	constructor(public events: Events, public ideasService: IdeasService) { }
+	constructor(public events: Events, public ideasService: IdeasService, public router: Router) { }
 
 
 	@Input() showArchived: boolean;
@@ -76,7 +77,7 @@ export class IdeaListComponent implements OnInit {
 		this.events.publish('ideas:updated', this.ideas);
 	}
 
-	showActionSheet(idea: Idea): void {
+	showActionSheet(idea: Idea, id: string): void {
 		new ActionSheetIdeaComponent(idea, this).presentActionSheet();
 	}
 }

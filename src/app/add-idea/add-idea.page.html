@@ -2,8 +2,9 @@
     <ion-toolbar>
         <ion-buttons slot="start">
             <ion-back-button defaultHref=""></ion-back-button>
-        </ion-buttons>
-        <ion-title>Add Idea</ion-title>
+		</ion-buttons>
+        <ion-title [hidden]="id">Add Idea</ion-title>
+        <ion-title [hidden]="!id">Edit Idea</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -31,7 +32,10 @@
                 </ion-item>
             </ion-list>
 
-            <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!form.valid">Add</ion-button>
+            <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!form.valid">
+				<span [hidden]="id">Add</span>
+				<span [hidden]="!id">Edit</span>
+			</ion-button>
         </form>
 
     </ion-content>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Idea } from '../models/idea';
 import { IdeasService } from '../services/ideas.service';
+import {Location} from '@angular/common';
 
 @Component({
 	selector: 'app-add-idea',
@@ -12,28 +13,34 @@ import { IdeasService } from '../services/ideas.service';
 export class AddIdeaPage implements OnInit {
 	form: FormGroup;
 	topics: string[] = Idea.getScoreTopics();
-
-	constructor(private router: Router, public formBuilder: FormBuilder, public ideasService: IdeasService) { }
+	idea: Idea = new Idea('', '', false, new Date(), {});
+	id: any;
+	constructor(public formBuilder: FormBuilder, public ideasService: IdeasService, private route: ActivatedRoute, private location: Location) { }
 
 	ngOnInit() {
+		this.id = this.route.snapshot.queryParamMap.get('id');
+		if (this.id) { this.idea = this.ideasService.getIdea(this.id); }
 		const formInputs: { [k: string]: any } = {
-			title: new FormControl('', Validators.required),
-			description: new FormControl('', Validators.required),
+			title: new FormControl(this.idea.title, Validators.required),
+			description: new FormControl(this.idea.description, Validators.required),
 			topics: new FormGroup({})
 		};
 		// add inputs dynamically
 		this.topics.forEach(topic => {
-			formInputs.topics.addControl(topic, new FormControl(5, [Validators.min(0), Validators.max(10), Validators.required]));
+			let value = 5;
+			if (topic in this.idea) { value = this.idea[topic]; }
+			formInputs.topics.addControl(topic, new FormControl(value, [Validators.min(0), Validators.max(10), Validators.required]));
 		});
 		this.form = this.formBuilder.group(formInputs);
 	}
 
 	addIdea(value) {
-		this.ideasService.addIdea(value.title, value.description, value.topics);
-		this.goBack();
+		if (this.id) {
+			this.ideasService.editIdea(this.idea, value.title, value.description, value.topics);
+		} else {
+			this.ideasService.addIdea(value.title, value.description, value.topics);
+		}
+		this.location.back();
 	}
 
-	goBack() {
-		this.router.navigate(['/tabs/tab_ideas']);
-	}
 }
