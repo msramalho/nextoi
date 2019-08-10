@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Events } from '@ionic/angular';
 
 @Component({
-	selector: 'app-score-range',
-	templateUrl: './score-range.component.html',
-	styleUrls: ['./score-range.component.scss'],
+  selector: 'app-ideas-filter-bar',
+  templateUrl: './ideas-filter-bar.component.html',
+  styleUrls: ['./ideas-filter-bar.component.scss'],
 })
-export class ScoreRangeComponent implements OnInit {
+export class IdeasFilterBarComponent implements OnInit {
 
 	knobValues = {
 		lower: 0,

@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TabIdeas as TabIdeas } from './tab_ideas.page';
 import { IdeaListComponent } from '../components/idea-list/idea-list.component';
-import { ScoreRangeComponent } from '../components/score-range/score-range.component';
+import { IdeasFilterBarComponent } from '../components/ideas-filter-bar/ideas-filter-bar.component';
 
 @NgModule({
 	imports: [
@@ -14,6 +14,6 @@ import { ScoreRangeComponent } from '../components/score-range/score-range.compo
 		FormsModule,
 		RouterModule.forChild([{ path: '', component: TabIdeas }])
 	],
-	declarations: [TabIdeas, IdeaListComponent, ScoreRangeComponent]
+	declarations: [TabIdeas, IdeaListComponent, IdeasFilterBarComponent]
 })
 export class TabIdeasModule { }
