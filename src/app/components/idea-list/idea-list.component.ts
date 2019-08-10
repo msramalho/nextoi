@@ -27,7 +27,6 @@ export class IdeaListComponent implements OnInit {
 	ngOnInit() {
 		this.ideasService.getIdeas().then(ideas => {
 			this.ideas = ideas;
-			console.log(this.ideas);
 			this.display();
 			this.events.subscribe('knobValues:updated', (knobValues: any) => {
 				this.filters.score.lower = knobValues.lower;
