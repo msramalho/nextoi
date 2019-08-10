@@ -1,4 +1,4 @@
-<ion-searchbar animated placeholder="Filter Ideas"></ion-searchbar>
+<ion-searchbar animated placeholder="Filter Ideas" [(ngModel)]="searchBar" (ionChange)="searchBarChanged()"></ion-searchbar>
 
 <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="sort by">
     <ion-select-option value="sd">Best</ion-select-option>

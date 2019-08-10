@@ -9,5 +9,4 @@ export class TabIdeasPage {
 
 	constructor() { }
 
-
 }

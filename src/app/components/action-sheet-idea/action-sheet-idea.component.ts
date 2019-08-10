@@ -25,8 +25,8 @@ export class ActionSheetIdeaComponent implements OnInit {
 					console.log('Share clicked');
 				}
 			}, {
-				text: 'Archive',
-				icon: 'archive',
+				text: this.idea.archived ? 'Unarchive' : 'Archive',
+				icon: this.idea.archived ? 'arrow-dropup-circle' : 'arrow-dropdown-circle',
 				handler: () => {
 					this.ideas.archiveIdea(this.idea);
 				}

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Idea } from 'src/app/models/idea';
 import { ActionSheetIdeaComponent } from '../action-sheet-idea/action-sheet-idea.component';
 import { Events } from '@ionic/angular';
+import { IdeasService } from 'src/app/services/ideas.service';
 
 @Component({
 	selector: 'app-idea-list',
@@ -9,56 +10,57 @@ import { Events } from '@ionic/angular';
 	styleUrls: ['./idea-list.component.scss'],
 })
 export class IdeaListComponent implements OnInit {
-
-	private ideas: Idea[] = [
-		new Idea('The main idea', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras varius vestibulum nunc et euismod. In non ante mauris. Proin et nisi eu dui consequat sagittis et ut turpis. ', true, [{ name: 'motivation', value: 6 }, { name: 'social status', value: 8 }]),
-		new Idea('The oahd idea', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ', false, [{ name: 'motivation', value: 6 }, { name: 'social status', value: 8 }]),
-		new Idea('The oahd idea', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ', true, [{ name: 'motivation', value: 6 }, { name: 'social status', value: 8 }]),
-		new Idea('The second idea', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras varius vestibulum nunc et euismod. In non ante mauris. Proin et nisi eu dui consequat sagittis et ut turpis. ', true, [{ name: 'motivation', value: 5 }, { name: 'social status', value: 4 }]),
-		new Idea('The third idea', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras varius vestibulum nunc et euismod. In non ante mauris. Proin et nisi eu dui consequat sagittis et ut turpis. ', false, [{ name: 'motivation', value: 3 }, { name: 'social status', value: 10 }]),
-		new Idea('The third idea', 'batman Cras varius vestibulum nunc et euismod. In non ante mauris. Proin et nisi eu dui consequat sagittis et ut turpis. ', true, [{ name: 'motivation', value: 2 }, { name: 'social status', value: 2 }])
-	];
-	private visibleIdeas: Idea[] = this.ideas;
-	filters: any = {
+	private filters: any = {
 		score: { lower: 0, upper: 10 },
 		text: '',
 		sortBy: 0
 	};
+	private ideas: Idea[];
+	private visibleIdeas: Idea[];
 
-	constructor(public events: Events) { }
+	constructor(public events: Events, public ideasService: IdeasService) { }
+
 
 	@Input() showArchived: boolean;
 
 	ngOnInit() {
-		this.ideas = this.ideas.filter(i => i.archived === this.showArchived);
+		this.ideas = this.ideasService.getIdeas();
 		this.visibleIdeas = this.ideas;
+		this.display();
 		this.events.subscribe('knobValues:updated', (knobValues: any) => {
 			this.filters.score.lower = knobValues.lower;
 			this.filters.score.upper = knobValues.upper;
-			this.filter();
+			this.display();
 		});
+		this.events.subscribe('searchBar:updated', (searchBar: string) => {
+			this.filters.text = searchBar;
+			this.display();
+		});
+		this.events.subscribe('ideas:updated', () => { this.display(); });
 	}
 
 	// filter methods
-	filter() {
-		this.visibleIdeas = this.ideas.filter(i => {
+	display() {
+		this.visibleIdeas = this.ideas.filter(
+			i => i.archived === this.showArchived
+		).filter(i => {
 			const score = i.getScore();
 			return this.filters.score.lower <= score && score <= this.filters.score.upper;
 		}).filter(i =>
-			(i.title + ' ' + i.description).includes(this.filters.text)
+			(i.title + ' ' + i.description).includes(this.filters.text.trim())
 		);
 		// this.visibleIdeas.sort()
 	}
 
 	// idea actions
 	deleteIdea(idea: Idea) {
-		this.ideas = this.ideas.filter((i) => i !== idea);
-		this.filter();
+		this.ideas = this.ideas.filter(i => i !== idea);
+		this.events.publish('ideas:updated');
 	}
 
 	archiveIdea(idea: Idea) {
 		idea.archived = !idea.archived;
-		this.filter();
+		this.events.publish('ideas:updated');
 	}
 
 	// others

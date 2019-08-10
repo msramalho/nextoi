@@ -1,3 +1,4 @@
+<ion-grid class="ion-text-center small">{{visibleIdeas.length}} found</ion-grid>
 <ion-list *ngFor="let idea of visibleIdeas;" lines="full">
     <ion-item>
         <ion-grid class="ion-no-padding">
@@ -6,7 +7,7 @@
                 <ion-label>
                     {{idea.title}}
                 </ion-label>
-                <span *ngIf="idea.archived">(Archived)</span>
+                <!-- <span *ngIf="idea.archived">(Archived)</span> -->
                 <ion-button fill="clear" (click)="showActionSheet(idea)">
                     <ion-icon slot="icon-only" color="medium" name="more"></ion-icon>
                     <ion-ripple-effect></ion-ripple-effect>
