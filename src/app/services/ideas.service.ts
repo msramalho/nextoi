@@ -35,7 +35,7 @@ export class IdeasService {
 	addIdea(title: string, description: string, topics: { string: number }[]) {
 		this.ideas.push(
 			new Idea(title, description, false, new Date(),
-				Object.keys(topics).map((k, v) => ({ name: k, value: v }))
+				Object.keys(topics).map((k, v) => ({ name: k, value: topics[k] }))
 			));
 		this.events.publish('ideas:updated', this.ideas);
 	}
