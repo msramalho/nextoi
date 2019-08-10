@@ -7,14 +7,17 @@
                 <ion-label>
                     {{idea.title}}
                 </ion-label>
-                <!-- <span *ngIf="idea.archived">(Archived)</span> -->
                 <ion-button fill="clear" (click)="showActionSheet(idea)">
                     <ion-icon slot="icon-only" color="medium" name="more"></ion-icon>
                     <ion-ripple-effect></ion-ripple-effect>
                 </ion-button>
             </ion-row>
             <ion-row nowrap class="ion-align-items-center">
-				<span class="description">{{idea.description}}</span>
+                <span class="description">
+                    {{idea.description}}
+                    <span class="date">{{idea.date | date:'dd MMM y'}}</span>
+                </span>
+
             </ion-row>
         </ion-grid>
     </ion-item>

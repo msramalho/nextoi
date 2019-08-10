@@ -13,7 +13,7 @@ export class IdeaListComponent implements OnInit {
 	private filters: any = {
 		score: { lower: 0, upper: 10 },
 		text: '',
-		sortBy: 0
+		sortBy: 'newest'
 	};
 	private ideas: Idea[];
 	private visibleIdeas: Idea[];
@@ -36,6 +36,10 @@ export class IdeaListComponent implements OnInit {
 			this.filters.text = searchBar;
 			this.display();
 		});
+		this.events.subscribe('sortBy:updated', (sortBy: string) => {
+			this.filters.sortBy = sortBy;
+			this.display();
+		});
 		this.events.subscribe('ideas:updated', () => { this.display(); });
 	}
 
@@ -48,8 +52,15 @@ export class IdeaListComponent implements OnInit {
 			return this.filters.score.lower <= score && score <= this.filters.score.upper;
 		}).filter(i =>
 			(i.title + ' ' + i.description).includes(this.filters.text.trim())
-		);
-		// this.visibleIdeas.sort()
+		).sort((a, b) => {
+			switch (this.filters.sortBy) {
+				case 'newest': return a.date > b.date ? -1 : 1;
+				case 'oldest': return a.date <= b.date ? -1 : 1;
+				case 'best': return a.getScore() > b.getScore() ? -1 : 1;
+				case 'worst': return a.getScore() <= b.getScore() ? -1 : 1;
+				default: return 0;
+			}
+		});
 	}
 
 	// idea actions

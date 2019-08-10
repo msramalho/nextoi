@@ -13,4 +13,13 @@ span.description {
 
 .small {
     font-size: 0.8em;
+    position: relative;
+}
+
+.date {
+    font-size: 0.75em;
+    color: #8a8a8a;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
 }

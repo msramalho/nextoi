@@ -12,8 +12,9 @@ export class IdeasFilterBarComponent implements OnInit {
 		lower: 0,
 		upper: 10
 	};
-
 	searchBar = '';
+	sortBy = 'newest';
+
 	constructor(public events: Events) { }
 
 	ngOnInit() { }
@@ -24,5 +25,9 @@ export class IdeasFilterBarComponent implements OnInit {
 
 	searchBarChanged() {
 		this.events.publish('searchBar:updated', this.searchBar);
+	}
+
+	sortByChanged() {
+		this.events.publish('sortBy:updated', this.sortBy);
 	}
 }

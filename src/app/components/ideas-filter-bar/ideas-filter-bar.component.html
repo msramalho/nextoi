@@ -1,14 +1,14 @@
 <ion-searchbar animated placeholder="Filter Ideas" [(ngModel)]="searchBar" (ionChange)="searchBarChanged()"></ion-searchbar>
 
-<ion-select [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="sort by">
-    <ion-select-option value="sd">Best</ion-select-option>
-    <ion-select-option value="sa">Worst</ion-select-option>
-    <ion-select-option value="da">Newest</ion-select-option>
-    <ion-select-option value="ds">Oldest</ion-select-option>
+<ion-select [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="sort by" [(ngModel)]="sortBy" (ionChange)="sortByChanged()">
+    <ion-select-option value="newest">Newest</ion-select-option>
+    <ion-select-option value="oldest">Oldest</ion-select-option>
+    <ion-select-option value="best">Best</ion-select-option>
+    <ion-select-option value="worst">Worst</ion-select-option>
 </ion-select>
 
 <ion-item>
-    <ion-range min="0" max="10" step="0.1" color="tertiary" dualKnobs="true" [(ngModel)]="knobValues" (ngModelChange)="filterIdeasChanged()">
+    <ion-range min="0" max="10" step="0.1" color="tertiary" dualKnobs="true" [(ngModel)]="knobValues" (ionChange)="filterIdeasChanged()">
         <ion-label slot="start">{{knobValues.lower | number : '.1-2'}}</ion-label>
         <ion-label slot="end">{{knobValues.upper | number : '.1-2'}}</ion-label>
     </ion-range>
