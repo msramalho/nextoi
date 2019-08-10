@@ -16,7 +16,7 @@ export class IdeaListComponent implements OnInit {
 		sortBy: 'newest'
 	};
 	private ideas: Idea[];
-	private visibleIdeas: Idea[];
+	private visibleIdeas: Idea[] = [];
 
 	constructor(public events: Events, public ideasService: IdeasService) { }
 
@@ -24,23 +24,24 @@ export class IdeaListComponent implements OnInit {
 	@Input() showArchived: boolean;
 
 	ngOnInit() {
-		this.ideas = this.ideasService.getIdeas();
-		this.visibleIdeas = this.ideas;
-		this.display();
-		this.events.subscribe('knobValues:updated', (knobValues: any) => {
-			this.filters.score.lower = knobValues.lower;
-			this.filters.score.upper = knobValues.upper;
+		this.ideasService.getIdeas().then(ideas => {
+			this.ideas = ideas;
 			this.display();
+			this.events.subscribe('knobValues:updated', (knobValues: any) => {
+				this.filters.score.lower = knobValues.lower;
+				this.filters.score.upper = knobValues.upper;
+				this.display();
+			});
+			this.events.subscribe('searchBar:updated', (searchBar: string) => {
+				this.filters.text = searchBar;
+				this.display();
+			});
+			this.events.subscribe('sortBy:updated', (sortBy: string) => {
+				this.filters.sortBy = sortBy;
+				this.display();
+			});
+			this.events.subscribe('ideas:updated', () => { this.display(); });
 		});
-		this.events.subscribe('searchBar:updated', (searchBar: string) => {
-			this.filters.text = searchBar;
-			this.display();
-		});
-		this.events.subscribe('sortBy:updated', (sortBy: string) => {
-			this.filters.sortBy = sortBy;
-			this.display();
-		});
-		this.events.subscribe('ideas:updated', () => { this.display(); });
 	}
 
 	// filter methods
