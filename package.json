@@ -27,6 +27,7 @@
     "@ionic/storage": "^2.2.0",
     "cordova-android": "8.0.0",
     "cordova-browser": "^6.0.0",
+    "cordova-res": "^0.6.0",
     "core-js": "^2.5.4",
     "rxjs": "~6.5.1",
     "serializer.ts": "0.0.12",
