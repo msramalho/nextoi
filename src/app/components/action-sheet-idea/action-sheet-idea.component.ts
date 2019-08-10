@@ -1,18 +1,11 @@
 import { OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 import { Idea } from 'src/app/models/idea';
-import { IdeaListComponent } from '../idea-list/idea-list.component';
 
 export class ActionSheetIdeaComponent implements OnInit {
 
 	private actionSheetController: ActionSheetController = new ActionSheetController();
-	private idea: Idea;
-	private ideaListComponent: IdeaListComponent;
-
-	constructor(idea: Idea, ideas: IdeaListComponent) {
-		this.idea = idea;
-		this.ideaListComponent = ideas;
-	}
+	constructor(private idea: Idea, private ideas: any) { }
 
 	ngOnInit() { }
 
@@ -35,14 +28,14 @@ export class ActionSheetIdeaComponent implements OnInit {
 				text: 'Archive',
 				icon: 'archive',
 				handler: () => {
-					this.ideaListComponent.archiveIdea(this.idea);
+					this.ideas.archiveIdea(this.idea);
 				}
 			}, {
 				text: 'Delete',
 				role: 'destructive',
 				icon: 'trash',
 				handler: () => {
-					this.ideaListComponent.deleteIdea(this.idea);
+					this.ideas.deleteIdea(this.idea);
 				}
 			}]
 		});
