@@ -7,10 +7,7 @@ import { Component } from '@angular/core';
 })
 export class TabIdeas {
 
-	knobValues: any = {
-		lower: 0,
-		upper: 10
-	};
 	constructor() { }
+
 
 }

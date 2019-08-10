@@ -1,4 +1,4 @@
-<ion-list *ngFor="let idea of ideas;" lines="full">
+<ion-list *ngFor="let idea of visibleIdeas;" lines="full">
     <ion-item>
         <ion-grid class="ion-no-padding">
             <ion-row nowrap class="ion-align-items-center">
@@ -16,6 +16,5 @@
 				<span class="description">{{idea.description}}</span>
             </ion-row>
         </ion-grid>
-
     </ion-item>
 </ion-list>

@@ -1,0 +1,6 @@
+<ion-item>
+    <ion-range min="0" max="10" step="0.1" color="tertiary" dualKnobs="true" [(ngModel)]="knobValues" (ngModelChange)="filterIdeasChanged()">
+        <ion-label slot="start">{{knobValues.lower | number : '.1-2'}}</ion-label>
+        <ion-label slot="end">{{knobValues.upper | number : '.1-2'}}</ion-label>
+    </ion-range>
+</ion-item>
