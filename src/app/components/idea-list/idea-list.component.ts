@@ -10,10 +10,10 @@ import { ActionSheetIdeaComponent } from '../action-sheet-idea/action-sheet-idea
 export class IdeaListComponent implements OnInit {
 
 	ideas: Idea[] = [
-		new Idea('The main idea', true, [{ name: 'motivation', value: 6 }, { name: 'social status', value: 8 }]),
-		new Idea('The oahd idea', true, [{ name: 'motivation', value: 6 }, { name: 'social status', value: 8 }]),
-		new Idea('The second idea', true, [{ name: 'motivation', value: 5 }, { name: 'social status', value: 4 }]),
-		new Idea('The third idea', true, [{ name: 'motivation', value: 3 }, { name: 'social status', value: 10 }]),
+		new Idea('The main idea', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras varius vestibulum nunc et euismod. In non ante mauris. Proin et nisi eu dui consequat sagittis et ut turpis. ', true, [{ name: 'motivation', value: 6 }, { name: 'social status', value: 8 }]),
+		new Idea('The oahd idea', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ', true, [{ name: 'motivation', value: 6 }, { name: 'social status', value: 8 }]),
+		new Idea('The second idea', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras varius vestibulum nunc et euismod. In non ante mauris. Proin et nisi eu dui consequat sagittis et ut turpis. ', true, [{ name: 'motivation', value: 5 }, { name: 'social status', value: 4 }]),
+		new Idea('The third idea', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras varius vestibulum nunc et euismod. In non ante mauris. Proin et nisi eu dui consequat sagittis et ut turpis. ', true, [{ name: 'motivation', value: 3 }, { name: 'social status', value: 10 }]),
 	];
 
 	constructor() { }
