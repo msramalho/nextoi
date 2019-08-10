@@ -23,3 +23,12 @@ span.description {
     bottom: 5px;
     right: 5px;
 }
+
+ion-grid.header {
+    position: relative;
+}
+
+ion-grid.header ion-button {
+    position: absolute;
+    right: 0px;
+}
