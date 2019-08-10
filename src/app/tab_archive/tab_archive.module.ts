@@ -4,16 +4,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TabArchivePage } from './tab_archive.page';
-import { IdeaListComponent } from '../components/idea-list/idea-list.component';
-import { IdeasFilterBarComponent } from '../components/ideas-filter-bar/ideas-filter-bar.component';
+import { IdeasListBarModule } from '../ideas-list-bar/ideas-list-bar.module';
 
 @NgModule({
 	imports: [
 		IonicModule,
 		CommonModule,
 		FormsModule,
-		RouterModule.forChild([{ path: '', component: TabArchivePage }])
+		RouterModule.forChild([{ path: '', component: TabArchivePage }]),
+		IdeasListBarModule
 	],
-	declarations: [TabArchivePage, IdeaListComponent, IdeasFilterBarComponent]
+	declarations: [TabArchivePage]
 })
 export class TabArchivePageModule { }

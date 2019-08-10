@@ -4,16 +4,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TabIdeasPage as TabIdeasPage } from './tab_ideas.page';
-import { IdeaListComponent } from '../components/idea-list/idea-list.component';
-import { IdeasFilterBarComponent } from '../components/ideas-filter-bar/ideas-filter-bar.component';
+import { IdeasListBarModule } from '../ideas-list-bar/ideas-list-bar.module';
 
 @NgModule({
 	imports: [
 		IonicModule,
 		CommonModule,
 		FormsModule,
-		RouterModule.forChild([{ path: '', component: TabIdeasPage }])
+		RouterModule.forChild([{ path: '', component: TabIdeasPage }]),
+		IdeasListBarModule
 	],
-	declarations: [TabIdeasPage, IdeaListComponent, IdeasFilterBarComponent]
+	declarations: [TabIdeasPage]
 })
 export class TabIdeasPageModule { }
