@@ -31,7 +31,7 @@ export class AddIdeaPage implements OnInit {
 
 	addIdea(value) {
 		this.ideasService.addIdea(value.title, value.description);
-		this.form.reset();
+		// this.form.reset();
 		this.goBack();
 	}
 
