@@ -19,8 +19,9 @@ export class IdeasService {
 		this.ready = new Promise((resolve, _) => {
 			this.storage.get('ideas').then(ideas => {
 				this.ideas = deserialize<Idea[]>(Idea, ideas);
-				events.subscribe('ideas:updated', () => {
-					this.storage.set('ideas', serialize(this.ideas));
+				events.subscribe('ideas:updated', (newIdeas) => {
+					this.ideas = newIdeas;
+					this.storage.set('ideas', serialize<Idea[]>(this.ideas));
 				});
 				resolve();
 			});
@@ -31,8 +32,12 @@ export class IdeasService {
 		return this.ready.then(() => this.ideas);
 	}
 
-	addIdea(title: string, description: string) {
-		this.ideas.push(new Idea(title, description, false, new Date(), []));
-		this.events.publish('ideas:updated');
+	addIdea(title: string, description: string, topics: { string: number }[]) {
+		this.ideas.push(
+			new Idea(title, description, false, new Date(),
+				Object.keys(topics).map((k, v) => ({ name: k, value: v }))
+			));
+		this.events.publish('ideas:updated', this.ideas);
 	}
+
 }

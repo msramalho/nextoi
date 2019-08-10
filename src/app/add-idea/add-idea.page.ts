@@ -26,12 +26,10 @@ export class AddIdeaPage implements OnInit {
 			formInputs.topics.addControl(topic, new FormControl(5, [Validators.min(0), Validators.max(10), Validators.required]));
 		});
 		this.form = this.formBuilder.group(formInputs);
-		console.log(this.form);
 	}
 
 	addIdea(value) {
-		this.ideasService.addIdea(value.title, value.description);
-		// this.form.reset();
+		this.ideasService.addIdea(value.title, value.description, value.topics);
 		this.goBack();
 	}
 

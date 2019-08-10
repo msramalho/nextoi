@@ -40,7 +40,9 @@ export class IdeaListComponent implements OnInit {
 				this.filters.sortBy = sortBy;
 				this.display();
 			});
-			this.events.subscribe('ideas:updated', () => { this.display(); });
+			this.events.subscribe('ideas:updated', (newIdeas) => {
+				this.ideas = newIdeas; this.display();
+			});
 		});
 	}
 
@@ -65,12 +67,12 @@ export class IdeaListComponent implements OnInit {
 
 	deleteIdea(idea: Idea) {
 		this.ideas = this.ideas.filter(i => i !== idea);
-		this.events.publish('ideas:updated');
+		this.events.publish('ideas:updated', this.ideas);
 	}
 
 	archiveIdea(idea: Idea) {
 		idea.archived = !idea.archived;
-		this.events.publish('ideas:updated');
+		this.events.publish('ideas:updated', this.ideas);
 	}
 
 	showActionSheet(idea: Idea): void {
