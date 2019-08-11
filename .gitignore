@@ -1,6 +1,7 @@
 *.jks
 *.env
 *.apk
+keystore.properties
 release.sh
 *~
 *.sw[mnpcod]

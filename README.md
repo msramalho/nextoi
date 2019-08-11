@@ -29,6 +29,13 @@ You can then sort, filter and search for your ideas and ultimately archive and d
 
 ### Deploy to playstore
 
+#### Outdated
 1. [source](https://ionicframework.com/docs/publishing/play-store)
 2. run `release.sh` (custom made file)
 3. upload to play store
+
+#### Updated
+
+1. Update the **cdvVersionCode** in [gradle.properties](android/platform/gradle.properties)
+2. If Android bundle is necessary, do `gradlew clean bundle` in `platforms/android/` and then the bundle will be available [here](platforms\android\app\build\outputs\bundle\release)
+3. This required the creation of the `release-signing.properties` in `android/platform` according to [this](https://stackoverflow.com/a/39727947/6196010)
