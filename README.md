@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-	Built with <a href="https://ionicframework.com/">Ionic 4</a>
+	Built with <a href="https://ionicframework.com/">Ionic</a> and <a href="https://angular.io/">Angular</a>
 </p>
 
 
