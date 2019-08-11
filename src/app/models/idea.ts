@@ -8,7 +8,7 @@ export class Idea {
 	}
 
 	public static getScoreTopics(): string[] {
-		return ['motivation', 'social status', 'profitability', 'workload', 'educational', 'door opening', 'usefulness', 'scalability', 'costs'];
+		return ['motivation', 'social status', 'profitability', 'workload', 'educational', 'door opening', 'usefulness', 'scalability', 'costs', 'realistic'];
 	}
 
 	public getScore(): number {

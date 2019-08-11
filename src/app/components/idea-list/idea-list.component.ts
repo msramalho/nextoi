@@ -17,7 +17,7 @@ export class IdeaListComponent implements OnInit {
 		sortBy: 'newest'
 	};
 	private ideas: Idea[];
-	private visibleIdeas: Idea[] = [];
+	public visibleIdeas: Idea[] = [];
 
 	constructor(public events: Events, public ideasService: IdeasService, public router: Router) { }
 

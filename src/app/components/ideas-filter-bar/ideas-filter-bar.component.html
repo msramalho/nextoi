@@ -1,11 +1,20 @@
 <ion-searchbar animated placeholder="Filter Ideas" [(ngModel)]="searchBar" (ionChange)="searchBarChanged()"></ion-searchbar>
 
-<ion-select [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="sort by" [(ngModel)]="sortBy" (ionChange)="sortByChanged()">
-    <ion-select-option value="newest">Newest</ion-select-option>
-    <ion-select-option value="oldest">Oldest</ion-select-option>
-    <ion-select-option value="best">Best</ion-select-option>
-    <ion-select-option value="worst">Worst</ion-select-option>
-</ion-select>
+<ion-grid>
+    <ion-row class="ion-align-items-center ion-no-padding">
+        <ion-col size="4">
+            <ion-label class="ion-align-self-center">Sort by: </ion-label>
+        </ion-col>
+        <ion-col size="8">
+            <ion-select interface="popover" placeholder="sort by" [(ngModel)]="sortBy" (ionChange)="sortByChanged()">
+                <ion-select-option value="newest">Newest</ion-select-option>
+                <ion-select-option value="oldest">Oldest</ion-select-option>
+                <ion-select-option value="best">Best</ion-select-option>
+                <ion-select-option value="worst">Worst</ion-select-option>
+            </ion-select>
+        </ion-col>
+    </ion-row>
+</ion-grid>
 
 <ion-item>
     <ion-range min="0" max="10" step="0.1" dualKnobs="true" [(ngModel)]="knobValues" (ionChange)="filterIdeasChanged()">

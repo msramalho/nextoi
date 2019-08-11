@@ -10,15 +10,12 @@ import { serialize, deserialize } from 'serializer.ts/Serializer';
 export class IdeasService {
 
 	private ideas: Idea[] = [];
-	private ready: any;
-	// private ideas: Idea[] = [
-	// 	new Idea('The main idea', 'Add new ideas as they come and delete or archive this one when ready.', false, new Date(), [{ name: 'motivation', value: 6 }, { name: 'social status', value: 8 }])
-	// ];
+	private ready: Promise<any>;
 
 	constructor(private events: Events, private storage: Storage) {
 		this.ready = new Promise((resolve, _) => {
 			this.storage.get('ideas').then(ideas => {
-				this.ideas = deserialize<Idea[]>(Idea, ideas);
+				if (ideas) { this.ideas = deserialize<Idea[]>(Idea, ideas); }
 				events.subscribe('ideas:updated', (newIdeas) => {
 					this.ideas = newIdeas;
 					this.storage.set('ideas', serialize<Idea[]>(this.ideas));
@@ -32,7 +29,7 @@ export class IdeasService {
 		return this.ready.then(() => this.ideas);
 	}
 
-	getIdea(id): Idea {
+	getIdea(id: string): Idea {
 		return this.ideas.find(idea => idea.id === id);
 	}
 
