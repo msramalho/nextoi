@@ -1,14 +1,26 @@
-# NexToI | Next To Implement
-For people with an overflow of ideas
+<h1 align="center">NexToI | Next To Implement</h1>
 
-Built with [Ionic 4](https://ionicframework.com/)
+<p align="center">
+	<img src="https://i.imgur.com/xO0fYpr.png" width="25%"/>
+</p>
+	
+<p align="center">
+	For people with an overflow of ideas
+</p>
+
+<p align="center">
+	Built with <a href="https://ionicframework.com/">Ionic 4</a>
+</p>
+
+
 
 
 ### Prints
+
 <p>
 	<div align="center">
-		<img src="https://i.imgur.com/LtMgN3O.png" width="275px"/> &nbsp;
-		<img src="https://i.imgur.com/YwAE2Q2.png" width="275px"/> &nbsp;	
+		<img src="https://i.imgur.com/LtMgN3O.png" width="275px"/> &nbsp; 
+		<img src="https://i.imgur.com/YwAE2Q2.png" width="275px"/> &nbsp; 	
 		<img src="https://i.imgur.com/VVBE8gF.png" width="275px"/>
 	</div>
 </p>
