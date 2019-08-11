@@ -1,10 +1,10 @@
+import { v4 as uuid } from 'uuid';
 
 export class Idea {
 	public id: string;
 
 	constructor(public title: string, public description: string, public archived: boolean, public date: Date, public topics: {}) {
-		const uuidv4 = require('uuid/v4');
-		this.id = uuidv4();
+		this.id = uuid();
 	}
 
 	public static getScoreTopics(): string[] {
