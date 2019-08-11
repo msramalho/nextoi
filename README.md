@@ -1,6 +1,10 @@
-# nextoi
-Next To Implement Mobile App | For people with an overflow of ideas
+# NexToI | Next To Implement
+For people with an overflow of ideas
 
+Built with [Ionic 4](https://ionicframework.com/)
+
+
+### Prints
 <p>
 	<div align="center">
 		<img src="https://i.imgur.com/LtMgN3O.png" width="275px"/> &nbsp;
@@ -10,17 +14,7 @@ Next To Implement Mobile App | For people with an overflow of ideas
 </p>
 
 
-<details><summary>Development</summary>
-
-* `ionic cordova build ios/android --prod` build for android
-* `ionic cordova run android --device` run on android
-* `ionic cordova run android --device  -l --debug` run on android for debug
-* `ionic cordova build browser` + `ionic serve --cordova --platform browser` to have cordova with livereload 
-* `ionic serve --lab --cordova --platform browser` to open the ionic-lab
-
-</details>
-
-<details><summary>Description</summary>
+<details><summary><strong>Description</strong></summary>
 <p>
 
 Typically for people who have more ideas than time to implement them all, this app helps you figure out which should be the next one to be implemented.
@@ -42,7 +36,27 @@ You can then sort, filter and search for your ideas and ultimately archive and d
 </p>
 </details>
 
-<details><summary>Deploymnet</summary>
+
+
+
+
+<details><summary><strong>Development</strong></summary>
+
+* `ionic cordova build ios/android --prod` build for android
+* `ionic cordova run android --device` run on android
+* `ionic cordova run android --device  -l --debug` run on android for debug
+* `ionic cordova build browser` + `ionic serve --cordova --platform browser` to have cordova with livereload 
+* `ionic serve --lab --cordova --platform browser` to open the ionic-lab
+
+</details>
+
+
+
+
+
+
+
+<details><summary><strong>Deployment</strong></summary>
 
 ### PlayStore
 
