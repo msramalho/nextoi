@@ -28,7 +28,7 @@ export class AddIdeaPage implements OnInit {
 		// add inputs dynamically
 		this.topics.forEach(topic => {
 			let value = 5;
-			if (topic in this.idea) { value = this.idea[topic]; }
+			if (topic in this.idea.topics) { value = this.idea.topics[topic]; }
 			formInputs.topics.addControl(topic, new FormControl(value, [Validators.min(0), Validators.max(10), Validators.required]));
 		});
 		this.form = this.formBuilder.group(formInputs);
