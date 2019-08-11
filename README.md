@@ -2,6 +2,14 @@
 Next To Implement Mobile App | For people with an overflow of ideas
 
 
+<div>
+	<img src="https://i.imgur.com/LtMgN3O.png" align="right"/>
+	<img src="https://i.imgur.com/YwAE2Q2.png" align="right"/>
+	<img src="https://i.imgur.com/VVBE8gF.png" align="right"/>
+</div>
+
+
+
 * `ionic cordova build ios/android --prod` build for android
 * `ionic cordova run android --device` run on android
 * `ionic cordova run android --device  -l --debug` run on android for debug
