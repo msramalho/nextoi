@@ -15,8 +15,6 @@
 
 
 
-### Prints
-
 <p>
 	<div align="center">
 		<img src="https://i.imgur.com/LtMgN3O.png" width="275px"/> &nbsp; 
@@ -79,7 +77,12 @@ You can then sort, filter and search for your ideas and ultimately archive and d
 
 #### Updated
 
-1. Update the **cdvVersionCode** in [gradle.properties](android/platform/gradle.properties)
-2. If Android bundle is necessary, do `gradlew clean bundle` in `platforms/android/` and then the bundle will be available [here](platforms\android\app\build\outputs\bundle\release)
-3. This required the creation of the `release-signing.properties` in `android/platform` according to [this](https://stackoverflow.com/a/39727947/6196010)
+1. If android platform is still not present: `cordova platform add android`
+2. Update the **cdvVersionCode** in [gradle.properties](platforms/android/gradle.properties) to be larger than the one visible in [Google Play Console](https://play.google.com/apps/publish/) (as a reference started as `100001` for `v1.0.1`)
+3. Update the `version` in [package.json](package.json) and [config.xml](config.xml)
+4. `ionic cordova build android --prod --release` (will generate gradlew if not present)
+5. Copy [my-release-keys.jks](my-release-keys.jks) and [release-signing.properties](release-signing.properties)
+6. Next step requires `release-signing.properties` to exist in `android/platform` according to [this](https://stackoverflow.com/a/39727947/6196010), otherwise playstore won't accept as it is not signed
+7. `cd platforms/android/` and then `./gradlew clean bundle` - aftwerwards the **signed** (assuming release-signing.properties) bundle will be available [here](platforms\android\app\build\outputs\bundle\release)
+8. Go to [Google Play Console](https://play.google.com/apps/publish/) select app > Release Management > App Releases > Production and upload new bundle
 </details>

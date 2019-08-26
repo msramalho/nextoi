@@ -2,6 +2,7 @@
 *.env
 *.apk
 keystore.properties
+release-signing.properties
 release.sh
 *~
 *.sw[mnpcod]
