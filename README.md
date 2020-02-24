@@ -5,7 +5,7 @@
 </p>
 	
 <p align="center">
-	For people with an overflow of ideas
+	sorting personal projects in an overfitted manner
 </p>
 
 <p align="center">
