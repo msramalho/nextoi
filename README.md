@@ -8,6 +8,10 @@
 	sorting personal projects in an overfitted manner
 </p>
 
+<h3 align="center">
+	If you want to overfit this to <u>yourself</u> just edit <a href="https://github.com/msramalho/nextoi/blob/e66cfd83df23cd1dc7159397d148133127cfb650/src/app/models/idea.ts#L11">this line</a> and build your own apk.
+</h3>
+
 <p align="center">
 	Built with <a href="https://ionicframework.com/">Ionic</a> and <a href="https://angular.io/">Angular</a>
 </p>
