@@ -1,0 +1,24 @@
+<ion-grid class="ion-text-center small">{{visibleIdeas.length}} found</ion-grid>
+<ion-list *ngFor="let idea of visibleIdeas;let i = index;" lines="full">
+    <ion-item>
+        <ion-grid class="ion-no-padding header">
+            <ion-row nowrap class="ion-align-items-center">
+                <span class="score">{{idea.getScore() | number : '1.1-2'}}</span>
+                <ion-label>
+                    {{idea.title}}
+				</ion-label>
+                <ion-button fill="clear" (click)="showActionSheet(idea, i)">
+                    <ion-icon slot="icon-only" color="medium" name="more"></ion-icon>
+                    <ion-ripple-effect></ion-ripple-effect>
+                </ion-button>
+            </ion-row>
+            <ion-row nowrap class="ion-align-items-center">
+                <span class="description">
+                    {{idea.description}}
+                    <span class="date">{{idea.date | date:'dd MMM y'}}</span>
+                </span>
+
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+</ion-list>

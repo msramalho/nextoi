@@ -1,0 +1,7 @@
+{
+  "name": "nextoi",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
